@@ -17,6 +17,7 @@ export class FoodService {
 
     parseCals(data) {
         let body = JSON.parse(data);
+        console.log(body);
         let cals = body.hints[0].food.nutrients.ENERC_KCAL;
         return cals;
     }

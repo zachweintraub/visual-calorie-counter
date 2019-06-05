@@ -4,11 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Webpack Template</title>
+  <title>Visual Calorie Counter</title>
 </head>
 <body>
   <div class="container">
-    <h1>Webpack Template</h1>
+    <h1>Visual Calorie Counter</h1>
+    <form id="input">
+      <label for="imgUrl">Image URL:</label>
+      <input id="imgUrl" type="text">
+      <button type="submit">Count Cals!</button>
+    </form>
+    <div id="results">
+      <img id="userImage">
+      <p id="resultText">Yum, that looks like <span id="foodName"></span>! An average 100g serving contains <span id="cals"></span> calories.</p>
+    </div>
   </div>
 </body>
 </html>

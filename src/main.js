@@ -17,13 +17,20 @@ function processPhoto(url) {
     })
     .then(function(response){
         let cals = foodService.parseCals(response);
-        output.push(cals);
+        output.push(cals.toFixed(2));
+        $('#foodName').text(output[0]);
+        $('#cals').text(output[1]);
     })
-    return output;
 }
 
 $().ready(function(){
 
-    console.log(processPhoto("https://clarifai.com/cms-assets/20180320212200/food-004.jpg"));
+    $('#input').submit(function(e){
+        e.preventDefault();
+        let url = $('#imgUrl').val();
+        $('#userImage').attr('src', url);
+        $('#results').show();
+        processPhoto(url);
+    })
     
 });

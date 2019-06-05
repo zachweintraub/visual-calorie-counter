@@ -6,18 +6,15 @@ const app = new Clarifai.App({
 export class ClarifaiService {
     
     readFoods(url) {
-        return app.models.predict("bd367be194cf45149e75f01d59f77ba7", url);
+        let myPromise = app.models.predict("bd367be194cf45149e75f01d59f77ba7", url);
+        return myPromise;
     }
 
     parseFoods(response) {
         let data = response.outputs[0].data.concepts;
+        console.log(data);
         let output = data[0].name;
-        // for(let i = 0; i < data.length; i++) {
-        //     if(data[i].value > 0.6) {
-        //         output.push(data[i].name);
-        //     }
-        // }
-      return output;   
+        return output;   
     }
 
 }
