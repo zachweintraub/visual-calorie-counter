@@ -2,26 +2,19 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import './ClarifaiService'
-// import { ClarifaiService } from './ClarifaiService';
-
-const app = new Clarifai.App({
-    apiKey: 'ae61257611a4460bb27fadb94e19566a'
-});
-const foodModelId = "bd367be194cf45149e75f01d59f77ba7";
+import { ClarifaiService } from './ClarifaiService';
+import { FoodService } from './FoodService';
 
 $().ready(function(){
 
-    console.log('model id' + foodModelId);
-    app.models.predict(foodModelId, "https://samples.clarifai.com/food.jpg").then(
-        
-        function(response) {
-          console.log(response);
-        },
-        function(err) {
-          console.log(err);
-        }
-      );
-    
+    let clarifai = new ClarifaiService();
+
+    // clarifai.readFoods("https://www.tasteofhome.com/wp-content/uploads/2017/10/exps6498_MRR133247D07_30_5b_WEB-2.jpg")
+    let foodService = new FoodService();
+    let promise = foodService.getCalories("pizza");
+    promise.then(function(response) {
+        let body = JSON.parse(response);
+        console.log(body)
+    })
   
 });

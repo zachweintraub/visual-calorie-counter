@@ -26,11 +26,11 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {from:'src/images',to:'images'} 
-    ]),
+    ])
     // new Dotenv(),
-    new Clarifai.App({
-      apiKey: 'ae61257611a4460bb27fadb94e19566a'
-    })
+    // new Clarifai.App({
+    //   apiKey: 'ae61257611a4460bb27fadb94e19566a'
+    // })
   ],
   mode: 'development',
   module: {
