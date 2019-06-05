@@ -14,4 +14,10 @@ export class FoodService {
             request.send();
         });
     }
+
+    parseCals(data) {
+        let body = JSON.parse(data);
+        let cals = body.hints[0].food.nutrients.ENERC_KCAL;
+        return cals;
+    }
 }

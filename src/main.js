@@ -5,16 +5,25 @@ import './styles.css';
 import { ClarifaiService } from './ClarifaiService';
 import { FoodService } from './FoodService';
 
+function processPhoto(url) {
+    let output = [];
+    let clarifai = new ClarifaiService();
+    let foodService = new FoodService();
+    clarifai.readFoods(url)
+    .then(function(response){
+        let mainFood = clarifai.parseFoods(response);
+        output.push(mainFood);
+        return foodService.getCalories(mainFood);
+    })
+    .then(function(response){
+        let cals = foodService.parseCals(response);
+        output.push(cals);
+    })
+    return output;
+}
+
 $().ready(function(){
 
-    let clarifai = new ClarifaiService();
-
-    // clarifai.readFoods("https://www.tasteofhome.com/wp-content/uploads/2017/10/exps6498_MRR133247D07_30_5b_WEB-2.jpg")
-    let foodService = new FoodService();
-    let promise = foodService.getCalories("pizza");
-    promise.then(function(response) {
-        let body = JSON.parse(response);
-        console.log(body)
-    })
-  
+    console.log(processPhoto("https://clarifai.com/cms-assets/20180320212200/food-004.jpg"));
+    
 });
