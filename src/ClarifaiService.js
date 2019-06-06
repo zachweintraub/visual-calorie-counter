@@ -12,8 +12,8 @@ export class ClarifaiService {
 
     parseFoods(response) {
         let data = response.outputs[0].data.concepts;
-        console.log(data);
-        let output = data[0].name;
+        let output= data.map(x => x.name)
+        console.log(output);
         return output;   
     }
 

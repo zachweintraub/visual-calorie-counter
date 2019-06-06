@@ -2,7 +2,7 @@ body {
   background-color: #7FDBFF;
 }
 
-#results {
+#results, #altResults {
   display: none;
 }
 
